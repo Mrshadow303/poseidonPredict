@@ -1,0 +1,11 @@
+#忽略所有数据集
+irships/
+
+# # 忽略图像数据目录
+# irships/images/
+
+# # 忽略标签数据目录
+# irships/labels/
+
+# 忽略模型文件
+*.pth
