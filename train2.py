@@ -2,56 +2,46 @@ import torch
 import torch.nn as nn
 import torch.optim as optim
 from torchvision import transforms
-from torch.utils.data import DataLoader, Dataset
-# from base_file import utils
+from torch.utils.data import DataLoader
+from base_file import utils
 from model import load_model
 import os
 from tqdm import tqdm  # 进度条库
-from dataSet import ShipDataset
+import cv2
+import numpy as np
 
 # 参数
 num_types = 4                        # 船舶类型的数量
 num_classes = 10                     # 船舶类别的数量
-num_epochs = 1                      # 训练轮数
+num_epochs = 1                       # 训练轮数
 model_name = "resnet50"              # 使用的预训练模型名称
 model_save_path = 'best_model.pth'   # 之前保存的模型路径，用来继续训练
 continue_training = False            # 是否继续训练之前的模型
 best_accuracy = 0.0                  # 初始化最佳准确率
-use_data_count = 1000               # 训练时使用的数据数量，None 表示使用全部数据
+use_data_count = 1000                # 训练时使用的数据数量，None 表示使用全部数据
 DATA_DIR = os.getcwd()               # 程序文件路径
 
 # 设置设备
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 print(f"正在使用 {device} 进行训练")
 
-# 数据变换
-transform = transforms.Compose([
-    transforms.Resize((256, 512)),  # 原分辨率(512, 1024)，这里降低是为了提高训练效率
-    transforms.ToTensor()
-])
-
-
-# 使用预处理后的数据进行训练
-train_dataset = ShipDataset(preprocessed_dir=os.path.join(DATA_DIR, 'preprocessed_images'),
-                            labels_dir=os.path.join(DATA_DIR, 'irships/labels'),
-                            metadata_file=os.path.join(DATA_DIR, 'irships/metadata.csv'),
-                            transform=transform,
-                            use_data_count=use_data_count,
-                            data_dir=DATA_DIR)
-# 使用原始数据进行训练
-# train_dataset = ShipDataset(images_dir=os.path.join(DATA_DIR, 'irships/images'),
-#                             labels_dir=os.path.join(DATA_DIR, 'irships/labels'),
-#                             metadata_file=os.path.join(DATA_DIR, 'irships/metadata.csv'),
-#                             transform=transform,
-#                             use_data_count=use_data_count,
-#                             data_dir=DATA_DIR)
-
-# 预处理数据,已经处理过数据的可跳过这一步
-train_dataset.preprocess_data()
-
+# 加载数据集
+train_dataset = utils.DataSet(root=os.path.join(DATA_DIR, r"irships"),
+                                metadata="metadata.csv",
+                                sea_intensity_range=(5, 30),
+                                sky_intensity_range=(2, 30),
+                                clutter_intensity_range=None,
+                                clutter_height_range=(0.2, 0.7),
+                                clutter_probability=0.5,
+                                augment_sea="/augment/sea",
+                                augment_sky="/augment/sky",
+                                augment_clutter="/augment/clutter",
+                                cache_sea_images=True,
+                                cache_sky_images=True,
+                                cache_clutter_images=True,
+                                blur=3,
+                                )
 train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True)
-#train_loader = DataLoader(train_dataset, batch_size=64, shuffle=True, num_workers=4)  # 多线程加速,但有更高的性能要求
-
 # 加载模型
 model = load_model(model_name, num_classes, num_types).to(device)
 
@@ -74,10 +64,41 @@ for epoch in range(num_epochs):
 
     # 添加进度条显示
     with tqdm(total=len(train_loader), desc=f"Epoch {epoch+1}/{num_epochs}", unit="batch") as pbar:
-        for images, labels, bboxes, ship_classes, ship_types in train_loader:
-            images, bboxes, ship_classes, ship_types = images.to(device), bboxes.to(device), ship_classes.to(device), ship_types.to(device)
+        for batch in train_loader:
+            images = []
+            bboxes = []
+            ship_classes = []
+            ship_types = []
+
+            for index in range(len(batch)):
+                image = batch['image'][index]
+                label = batch['label'][index]
+
+                # 将单通道图像转换为三通道图像
+                if image.ndim == 2:
+                    image = np.stack((image,) * 3, axis=-1)
+
+                images.append(image)
+
+                x1, y1, x2, y2 = batch['shipBox'][index]
+                ship_class = batch['shipClass'][index]
+                ship_type = batch['shipType'][index]
+
+                bboxes.append([x1, y1, x2, y2])
+                ship_classes.append(ship_class)
+                ship_types.append(ship_type)
+
+            images = torch.stack([transforms.ToTensor()(img) for img in images]).to(device)
+            bboxes = torch.tensor(bboxes, dtype=torch.float32).to(device)
+            # print(f"ship_classes: {ship_classes}, ship_types: {ship_types}")
+            ship_classes = torch.tensor(ship_classes, dtype=torch.long).to(device)
+            ship_types = torch.tensor(ship_types, dtype=torch.long).to(device)
+
             optimizer.zero_grad()
+            # 获取模型的输出
             outputs_bbox, outputs_class, outputs_type = model(images)
+
+            # 计算损失
             loss_bbox = criterion_bbox(outputs_bbox, bboxes)
             loss_class = criterion_class(outputs_class, ship_classes)
             loss_type = criterion_type(outputs_type, ship_types)
@@ -110,5 +131,3 @@ for epoch in range(num_epochs):
 # 强制保存最后一轮的模型
 torch.save(model.state_dict(), os.path.join(DATA_DIR, f"final_{class_accuracy:.4f}%.pth"))
 print("Final model saved.")
-
-

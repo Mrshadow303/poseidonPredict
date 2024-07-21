@@ -1,0 +1,570 @@
+clutter:
+  ice:
+    - image_url: 'https://live.staticflickr.com/3617/3621012410_122363a002_b.jpg'
+      reference: 'Natalie Lucier, (2008) Iceberg in Newfoundland Canada [Photograph]. (23 March). Available at: https://www.flickr.com/photos/36121888@N08/3621012410 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [0, 81, 1024, 432]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0000.png
+    - image_url: 'https://live.staticflickr.com/1713/25662638711_ddedbe02cf_b.jpg'
+      reference: 'David Stanley, (2016) Floating Iceberg [Photograph]. (13 March). Available at: https://www.flickr.com/photos/79721788@N00/25662638711 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 195, 1024, 574 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0001.png
+    - image_url: 'https://live.staticflickr.com/4127/5396387841_1a46f66741_b.jpg'
+      reference: 'Drew Avery, (2009) Assorted Icebergs [Photograph]. (08 August). Available at: https://www.flickr.com/photos/33590535@N06/5396387841 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 189, 1024, 443 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0002.png
+    - image_url: 'https://live.staticflickr.com/8193/8371340296_1181947d22_b.jpg'
+      reference: 'Christopher Michel, (2013) Iceberg! [Photograph]. (6 January). Available at: https://www.flickr.com/photos/50979393@N00/8371340296 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 80, 1024, 347 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0003.png
+    - image_url: 'https://live.staticflickr.com/8506/8372247406_c92a734031_b.jpg'
+      reference: 'Christopher Michel, (2013) Iceberg! [Photograph]. (6 January). Available at: https://www.flickr.com/photos/50979393@N00/8372247406 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 232, 1023, 486 ]
+        - name: mask
+          kwargs:
+             fp: masks/clutter/ice/0004.png
+    - image_url: 'https://live.staticflickr.com/6210/6065295630_61784b10ef_b.jpg'
+      reference: 'Osccarr, (2011) Bonito iceberg al fondo [Photograph]. (21 August). Available at: https://www.flickr.com/photos/66598477@N07/6065295630 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 56, 1024, 385 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0005.png
+    - image_url: 'https://live.staticflickr.com/7478/16167132502_65ab2be472_b.jpg'
+      reference: 'David Stanley, (2014) Tabular Iceberg [Photograph]. (28 October). Available at: https://www.flickr.com/photos/79721788@N00/16167132502 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 314, 1024, 442 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0006.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/03/Glacial_iceberg_in_Argentina.jpg'
+      reference: 'Ilya Haykinson, (2005) Glacial iceberg in Argentina [Photograph]. (15 April). Available at: https://commons.wikimedia.org/wiki/File:Glacial_iceberg_in_Argentina.jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 680, 1987, 1000 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0007.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/3/3c/Calving_and_ice_caves_Giant_Iceberg_Coral_Princess_Antarctica.jpg'
+      reference: 'amanderson2, (2019) Calving and ice caves Giant Iceberg Coral Princess Antarctica [Photograph]. (27 December). Available at: https://www.flickr.com/photos/49399018@N00/49473600408 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1331, 5184, 2002 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0008.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/e/eb/Pleneau_Island_Icebergs_3_%2846613778954%29.jpg'
+      reference: 'Gary Bembridge, (2019) Pleneau Island Icebergs 3 [Photograph]. (03 March). Available at: https://www.flickr.com/photos/8327374@N02/46613778954 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 424, 4920, 2486 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/ice/0009.png
+  structure:
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/8/84/Oil_Rig_Maintenance_in_Darwin_Harbour_May_2006_%284420332059%29.jpg'
+      reference: 'Ken Hodge, (2006) Oil Rig Maintenance in Darwin Harbour  [Photograph]. (19 May). Available at: https://commons.wikimedia.org/wiki/File:Oil_Rig_Maintenance_in_Darwin_Harbour_May_2006_(4420332059).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 576, 364, 1270, 1102 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0000.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/b/bc/Oil_platform_P-51_%28Brazil%29-2.jpg'
+      reference: 'Divulgação Petrobras, (2009) Oil platform P-51 (Brazil) [Photograph]. (02 January). Available at: https://commons.wikimedia.org/wiki/File:Oil_platform_P-51_(Brazil)-2.jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 690, 156, 2040, 1539 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0001.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/c/c0/Off-shore_Wind_Farm_Turbine.jpg'
+      reference: 'Phil Hollman, (2006) Off-shore Wind Farm Turbine [Photograph]. (08 July). Available at: https://commons.wikimedia.org/wiki/File:Off-shore_Wind_Farm_Turbine.jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 198, 0, 470, 471 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0002.png
+    - image_url: 'https://live.staticflickr.com/2134/2287486150_0f573d5471_b.jpg'
+      reference: 'David Eisner , (2007) Windmills near Emden [Photograph]. (26 August). Available at: https://www.flickr.com/photos/44698399@N00/2287486150 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 233, 0, 859, 591 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0003.png
+    - image_url: 'https://live.staticflickr.com/8472/8121919920_c6e3837f34_b.jpg'
+      reference: 'Ari Helminen, (2012) 鎌倉市 Kamakura, coastal town [Photograph]. (28 May). Available at: https://www.flickr.com/photos/36093266@N06/8121919920 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 237, 1024, 355 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0004.png
+    - image_url: 'https://live.staticflickr.com/845/29411578108_e1eab2620a_b.jpg'
+      reference: 'Terry Ott, (2018) Sunset in a Coastal Town [Photograph]. (26 May). Available at: https://www.flickr.com/photos/146878425@N05/29411578108 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 36, 272, 1024, 437 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0005.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/8/87/Buildings_-_panoramio_-_---%3DXEON%3D---_%281%29.jpg'
+      reference: '---=XEON=---, (2007) Buildings [Photograph]. (26 March). Available at: https://commons.wikimedia.org/wiki/File:Buildings_-_panoramio_-_---%3DXEON%3D---_(1).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1044, 3072, 1569 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0006.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/a/a2/Castle_2_-_panoramio_-_---%3DXEON%3D---_%281%29.jpg'
+      reference: '---=XEON=---, (2007) Castle 2 [Photograph]. (07 June). Available at: https://commons.wikimedia.org/wiki/File:Castle_2_-_panoramio_-_---%3DXEON%3D---_(1).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 720, 3072, 1434 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0007.png
+    - image_url: 'https://live.staticflickr.com/3285/3146364197_cb64c655e8_b.jpg'
+      reference: 'Douglas Cataylo, (2008) Bangui Windmills [Photograph]. (28 December). Available at: https://www.flickr.com/photos/31175477@N08/3146364197 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 47, 87, 965, 915 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0008.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/21/IStanbul_-_panoramio_-_---%3DXEON%3D---_%281%29.jpg'
+      reference: '---=XEON=---, (2007) Istanbul [Photograph]. (03 June). Available at: https://commons.wikimedia.org/wiki/File:IStanbul_-_panoramio_-_---%3DXEON%3D---_(1).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 858, 3072, 1458 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/structure/0009.png
+  landscape:
+    - image_url: 'https://live.staticflickr.com/8637/15715360508_1ef95921b5_b.jpg'
+      reference: 'Oliver Dodd, (2014) croatian coastal town [Photograph]. (21 May). Available at: https://www.flickr.com/photos/23262226@N08/15715360508 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 161, 1024, 463 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0000.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/e/ef/Savanna_towards_the_south-east_from_the_south_of_Taita_Hills_Game_Lodge_within_the_Taita_Hills_Wildlife_Sanctuary_in_Kenya_2.jpg'
+      reference: 'CT Cooper, (2011) Savanna towards the south-east from the south of Taita Hills Game Lodge within the Taita Hills Wildlife Sanctuary in Kenya 2 [Photograph]. (16 December). Available at: https://commons.wikimedia.org/w/index.php?curid=20212594 (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1284, 4608, 1872 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0001.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/9/96/Jack_London_Lake_by_bartosh.jpg'
+      reference: 'Bartosh Dmytro, (2005) Jack London Lake [Photograph]. (17 August). Available at: https://commons.wikimedia.org/w/index.php?curid=9761882 (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 5, 2000, 347 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0002.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/f/fe/08-8-22_Lake_Usori.JPG'
+      reference: 'XT, (2008) 08-8-22 Lake Usori [Photograph]. (22 August). Available at: https://commons.wikimedia.org/w/index.php?curid=11985526 (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 500, 3264, 1052 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0003.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/a/ac/View_of_Lake_Quinault.jpg'
+      reference: 'Tom Harpel, (2004) View of Lake Quinault [Photograph]. (31 October). Available at: https://commons.wikimedia.org/wiki/File:View_of_Lake_Quinault.jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 642, 2517, 1032 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0004.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/77/ARENAL_VOLCANO_LAKE_PANORAMA.jpg'
+      reference: 'Ksaraf, (2009) Arenal Volcano from across Lake Arenal in Costa Rica [Photograph]. (24 May). Available at: https://commons.wikimedia.org/wiki/File:ARENAL_VOLCANO_LAKE_PANORAMA.jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 957, 14384, 2090 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0005.png
+    - image_url: 'https://live.staticflickr.com/5505/11197434113_4b7792e89c_b.jpg'
+      reference: 'Jocelyn Kinghorn, (2013) Sea Green Water [Photograph]. (06 November). Available at: https://www.flickr.com/photos/48627921@N05/11197434113 (Accessed: 05 November 2020).'
+      licence: 'CC BY-SA 2.0 (Available at: https://creativecommons.org/licenses/by-sa/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 25, 1000, 394 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0006.png
+    - image_url: 'https://live.staticflickr.com/3710/11200820436_18c69bda9b_b.jpg'
+      reference: 'Jocelyn Kinghorn, (2016) Turning Around in the Tasman Sea [Photograph]. (06 November). Available at: https://www.flickr.com/photos/48627921@N05/11200820436 (Accessed: 05 November 2020).'
+      licence: 'CC BY-SA 2.0 (Available at: https://creativecommons.org/licenses/by-sa/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 156, 1000, 372 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0007.png
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/3/3f/Retezat_Mountain_-_Bucura_Lake_01.JPG'
+      reference: 'Thalpha, (2009) Retezat Mountain - Bucura Lake 01 [Photograph]. (16 August). Available at: "File:Retezat Mountain - Bucura Lake 01.JPG" by Thalpha is licensed with CC BY 3.0. To view a copy of this license, visit https://creativecommons.org/licenses/by/3.0 (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 204, 3872, 1308 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0008.png
+    - image_url: 'https://cdn.pixabay.com/photo/2016/11/29/05/23/island-1867510_960_720.jpg'
+      reference: '[Unknown author], (2016) Pacific Ocean [Photograph]. (28 September). Available at: https://pixabay.com/photos/island-dawn-dusk-light-ocean-rock-1867510/ (Accessed: 05 November 2020).'
+      licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 463, 111, 783, 208 ]
+        - name: mask
+          kwargs:
+            fp: masks/clutter/landscape/0009.png
+sea:
+  horizontal:
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/8/86/Pacific_Ocean_-_panoramio_-_---%3DXEON%3D---_%281%29.jpg'
+      reference: '---=XEON=---, (2007) Pacific Ocean [Photograph]. (02 April). Available at: https://commons.wikimedia.org/wiki/File:Pacific_Ocean_-_panoramio_-_---%3DXEON%3D---_(1).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1215, 3072, 2304 ]
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/9/9a/Pacific_Ocean_-_panoramio_-_---%3DXEON%3D---.jpg'
+      reference: '---=XEON=---, (2007) Pacific Ocean [Photograph]. (22 June). Available at: https://commons.wikimedia.org/wiki/File:Pacific_Ocean_-_panoramio_-_---%3DXEON%3D---.jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1266, 3072, 2304 ]
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/9/9c/Pacific_Ocean_-_panoramio_%2810%29.jpg'
+      reference: '---=XEON=---, (2009) Pacific Ocean [Photograph]. (29 August). Available at: https://commons.wikimedia.org/wiki/File:Pacific_Ocean_-_panoramio_(10).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1206, 3072, 2304 ]
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/0/02/Pacific_Ocean_-_panoramio_%281%29.jpg'
+      reference: '---=XEON=---, (2009) Pacific Ocean [Photograph]. (20 September). Available at: https://commons.wikimedia.org/wiki/File:Pacific_Ocean_-_panoramio_(1).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1365, 3072, 2304 ]
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/2/2c/City_-_panoramio_-_---%3DXEON%3D---.jpg'
+      reference: '---=XEON=---, (2007) City [Photograph]. (11 June). Available at: https://commons.wikimedia.org/wiki/File:City_-_panoramio_-_---%3DXEON%3D---.jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1452, 3072, 2304 ]
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/b/b2/Sea_-_panoramio_-_---%3DXEON%3D---_%281%29.jpg'
+      reference: '---=XEON=---, (2007) Sea [Photograph]. (01 April). Available at: https://commons.wikimedia.org/wiki/File:Sea_-_panoramio_-_---%3DXEON%3D---_(1).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 1215, 3072, 2304 ]
+    - image_url: 'https://live.staticflickr.com/3939/15513969175_080a16fbd7_b.jpg'
+      reference: 'Simon220771, (2014) Porthleven Sea 2 [Photograph]. (17 August). Available at: https://www.flickr.com/photos/9172639@N05/15513969175 (Accessed: 05 November 2020).'
+      licence: 'CC BY-SA 2.0 (Available at: https://creativecommons.org/licenses/by-sa/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 338, 1024, 683 ]
+    - image_url: 'https://live.staticflickr.com/4046/4668723393_0c37db8cbc_b.jpg'
+      reference: 'Alejandro VN, (2009) Estero Elefantes (XI región) [Photograph]. (08 April). Available at: https://www.flickr.com/photos/50606601@N07/4668723393 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 526, 1024, 768]
+    - image_url: 'https://live.staticflickr.com/8273/8772313524_f7e178249f_b.jpg'
+      reference: '蕭裕米, (2013) F1080036 [Photograph]. (22 May). Available at: https://www.flickr.com/photos/13680273@N08/8772313524 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 565, 1024, 683 ]
+    - image_url: 'https://live.staticflickr.com/2768/4242082339_93cef60e49_b.jpg'
+      reference: 'Andréia Reis, (2009) Aldeia do Lago - Minas Gerais [Photograph]. (28 December). Available at: https://www.flickr.com/photos/8276622@N03/4242082339 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 437, 1024, 576 ]
+    - image_url: 'https://live.staticflickr.com/2089/2142400479_d7baf828b5_b.jpg'
+      reference: 'Taehoon kang, (2007) 해운대에 열린 하늘 [Photograph]. (25 December). Available at: https://www.flickr.com/photos/36215017@N00/2142400479 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 645, 1024, 768 ]
+    - image_url: 'https://live.staticflickr.com/9/19215972_8d0f07685d_b.jpg'
+      reference: 'Phillip Capper, (2005) Waiheke from Beachlands, Manukau, New Zealand [Photograph]. (13 June). Available at: https://www.flickr.com/photos/42033648@N00/19215972 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 571, 1024, 726 ]
+    - image_url: 'https://live.staticflickr.com/8434/7777873100_a94484782d_b.jpg'
+      reference: 'Rubel Roy, (2011) Sunsets | Potenga| Chittagong | Bangladesh [Photograph]. (January 18). Available at: https://www.flickr.com/photos/25398215@N07/7777873100 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 175, 1024, 576 ]
+    - image_url: 'https://live.staticflickr.com/3587/3628106751_568164775a_b.jpg'
+      reference: 'James, (2009) Boston [Photograph]. (14 June). Available at: https://www.flickr.com/photos/monkeyatlarge/3628106751/ (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 372, 1024, 768 ]
+    - image_url: 'https://live.staticflickr.com/3716/11075280016_85d46d7345_b.jpg'
+      reference: 'Neil G Hamilton, (2013) Floating on the Firth [Photograph]. (22 November). Available at: https://www.flickr.com/photos/34800120@N08/11075280016 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [0, 345, 1024, 678 ]
+    - image_url: 'https://live.staticflickr.com/2516/5782755771_9b18b80812_b.jpg'
+      reference: 'Amy, (2011) Morning Fog [Photograph]. (24 May). Available at: https://www.flickr.com/photos/10976418@N04/5782755771 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 554, 1024, 768 ]
+    - image_url: 'https://cdn.pixabay.com/photo/2015/09/18/11/36/water-945409_960_720.jpg'
+      reference: '[Unknown author], (2015) Photograph. (16 October). Available at: https://pixabay.com/photos/water-blue-ocean-sea-waves-945409/ (Accessed: 05 November 2020).'
+      licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 321, 960, 640 ]
+  elevated:
+    - image_url: 'https://live.staticflickr.com/5083/5226965523_7ccd4e23dd_b.jpg'
+      reference: 'Paul Stephenson, (2010) The Sea above Salema, Portugal [Photograph]. (03 Novermber). Available at: https://www.flickr.com/photos/25979189@N00/5226965523 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+    - image_url: 'https://live.staticflickr.com/7338/8722408615_3be4dd052a_b.jpg'
+      reference: 'Prachanart Viriyaraks, (2013) Alone at sea... [Photograph]. (28 April). Available at: https://www.flickr.com/photos/33437095@N08/8722408615 (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 20, 1024, 500 ]
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/1/14/Dark_Blue_Sea_%284059975193%29.jpg'
+      reference: 'Tony Hisgett, (2009) Dark Blue Sea [Photograph]. (25 October). Available at: https://commons.wikimedia.org/wiki/File:Dark_Blue_Sea_(4059975193).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/7/7a/Blue_Sea_%28AP4M0834_1PS%29_%2829102203836%29.jpg'
+      reference: 'Alexandru Panoiu, (2013) Blue Sea [Photograph]. (27 July). Available at: https://commons.wikimedia.org/wiki/File:Blue_Sea_(AP4M0834_1PS)_(29102203836).jpg (Accessed: 05 November 2020).'
+      licence: 'CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode)'
+    - image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/ad/Blue_water_ripples_%28Unsplash%29.jpg/800px-Blue_water_ripples_%28Unsplash%29.jpg'
+      reference: 'Jonas Verstuyft, (2017) Blue water ripples [Photograph]. (02 Januray). Available at: https://commons.wikimedia.org/wiki/File:Blue_water_ripples_(Unsplash).jpg (Accessed: 05 November 2020).'
+      licence: 'CC0 1.0 (Available at: https://creativecommons.org/publicdomain/zero/1.0/legalcode)'
+    - image_url: 'https://cdn.pixabay.com/photo/2015/05/15/14/52/water-768745_960_720.jpg'
+      reference: '[Unknown author], (2015) Photograph. (12 April). Available at: https://pixabay.com/photos/water-blue-surface-sea-ocean-768745/ (Accessed: 05 November 2020).'
+      licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    - image_url: 'https://cdn.pixabay.com/photo/2012/02/23/08/43/aqua-15749_960_720.jpg'
+      reference: '[Unknown author], (2009) Photograph. (20 September). Available at: https://pixabay.com/photos/aqua-backdrop-background-beautiful-15749/ (Accessed: 05 November 2020).'
+      licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 195, 960, 640 ]
+    - image_url: 'https://cdn.pixabay.com/photo/2014/05/02/12/44/ocean-335973_960_720.jpg'
+      reference: 'Thomas Mühl, (2013) Photograph. (20 August). Available at: https://pixabay.com/photos/ocean-sea-water-water-surface-wave-335973/ (Accessed: 05 November 2020).'
+      licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    - image_url: 'https://cdn.pixabay.com/photo/2015/06/10/16/09/sea-804915_960_720.jpg'
+      reference: 'Susanne Pälmer, (2015) Photograph. (15 June). Available at: https://pixabay.com/photos/sea-ship-aerial-view-spain-804915/ (Accessed: 05 November 2020).'
+      licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 0, 570, 389 ]
+    - image_url: 'https://cdn.pixabay.com/photo/2015/07/02/10/47/ocean-828977_960_720.jpg'
+      reference: '[Unknown author], (2015) Photograph. (31 May). Available at: https://pixabay.com/photos/ocean-sea-water-horizon-sky-828977/ (Accessed: 05 November 2020).'
+      licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+      transforms:
+        - name: crop
+          kwargs:
+            box: [ 0, 140, 960, 590 ]
+sky:
+  - image_url: 'https://cdn.pixabay.com/photo/2014/11/16/15/15/field-533541_960_720.jpg'
+    reference: 'Gianni Crestani, (2011) Photograph. (27 July). Available at: https://pixabay.com/photos/field-land-clouds-sky-horizon-533541/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 960, 426 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0000.png
+  - image_url: 'https://cdn.pixabay.com/photo/2015/10/05/14/50/autumn-972717_960_720.jpg'
+    reference: 'Lubos Houska, (2015) Photograph. (07 October). Available at: https://pixabay.com/photos/autumn-landscape-nature-view-972717/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 960, 273 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0001.png
+  - image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Baltic_Sea_clouds.jpg/800px-Baltic_Sea_clouds.jpg'
+    reference: 'Andreas Rümpel, (2007) Baltic Sea Clouds [Photograph]. (05 September). Available at: https://commons.wikimedia.org/wiki/File:Baltic_Sea_clouds.jpg (Accessed: 05 November 2020).'
+    licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode), CC BY 2.5 (Available at: https://creativecommons.org/licenses/by/2.5/legalcode), CC BY 2.0 (Available at: https://creativecommons.org/licenses/by/2.0/legalcode), CC BY 1.0'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 800, 153 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0002.png
+  - image_url: 'https://cdn.pixabay.com/photo/2015/11/19/08/05/beach-1050518_960_720.jpg'
+    reference: 'Dorothe, (2014) Photograph. (26 September). Available at: https://pixabay.com/photos/beach-sky-clouds-sea-background-1050518/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 960, 451 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0003.png
+  - image_url: 'https://cdn.pixabay.com/photo/2020/02/16/06/00/ocean-4852673_960_720.jpg'
+    reference: 'Lilyana Millutin, (2020) Photograph. (17 February). Available at: https://pixabay.com/photos/ocean-blue-water-sky-sea-clouds-4852673/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 960, 390 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0004.png
+  - image_url: 'https://upload.wikimedia.org/wikipedia/commons/thumb/e/e0/Clouds_over_the_Atlantic_Ocean.jpg/800px-Clouds_over_the_Atlantic_Ocean.jpg'
+    reference: 'Tiago Fioreze, (2008) Clouds over the Atlantic Ocean [Photograph]. (07 April). Available at: https://commons.wikimedia.org/wiki/File:Clouds_over_the_Atlantic_Ocean.jpg (Accessed: 05 November 2020).'
+    licence: 'CC BY 3.0 (Available at: https://creativecommons.org/licenses/by/3.0/legalcode)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 799, 326 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0005.png
+  - image_url: 'https://cdn.pixabay.com/photo/2013/02/21/19/12/air-84675_960_720.jpg'
+    reference: '[Unknown author], (2013) Photograph. (21 February). Available at: https://pixabay.com/photos/air-beautiful-beauty-blue-calm-84675/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 960, 390 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0006.png
+  - image_url: 'https://cdn.pixabay.com/photo/2016/05/01/00/08/sky-1364240_960_720.jpg'
+    reference: 'Syed Irfan, (2016) Photograph. (05 May). Available at: https://pixabay.com/photos/sky-clouds-beach-blue-sky-clouds-1364240/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 960, 355 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0007.png
+  - image_url: 'https://cdn.pixabay.com/photo/2013/11/28/09/57/beach-219810_960_720.jpg'
+    reference: '[Unknown author], (2013) Photograph. (28 November). Available at: https://pixabay.com/photos/beach-sand-sea-sky-cloud-cloudy-219810/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: crop
+        kwargs:
+          box: [ 0, 0, 960, 270 ]
+      - name: mask
+        kwargs:
+          fp: masks/sky/0008.png
+  - image_url: 'https://cdn.pixabay.com/photo/2016/01/08/18/00/panorama-1128814_960_720.jpg'
+    reference: 'Paul Stephenson, (2014) Photograph. (14 September). Available at: https://pixabay.com/photos/panorama-clouds-sky-blue-white-1128814/ (Accessed: 05 November 2020).'
+    licence: 'Pixabay Licence (Available at: https://pixabay.com/service/terms/#license)'
+    transforms:
+      - name: mask
+        kwargs:
+          fp: masks/sky/0009.png

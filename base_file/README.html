@@ -1,0 +1,501 @@
+<!DOCTYPE HTML>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <title>
+   Made with Remarkable!
+  </title>
+  <link href="/home/samuel/Remarkable/data/media/highlightjs.default.min.css" rel="stylesheet"/>
+  <style type="text/css">
+   body,table tr{background-color:#fff}table tr td,table tr th{border:1px solid #ccc;text-align:left;padding:6px 13px;margin:0}pre code,table,table tr{padding:0}hr,pre code{background:0 0}body{font:16px Helvetica,Arial,sans-serif;line-height:1.4;color:#333;word-wrap:break-word;padding:10px 15px}strong,table tr th{font-weight:700}h1{font-size:2em;margin:.67em 0;text-align:center}h2{font-size:1.75em}h3{font-size:1.5em}h4{font-size:1.25em}h1,h2,h3,h4,h5,h6{font-weight:700;position:relative;margin-top:15px;margin-bottom:15px;line-height:1.1}h1,h2{border-bottom:1px solid #eee}hr{height:0;margin:15px 0;overflow:hidden;border:0;border-bottom:1px solid #ddd}a{color:#4183C4}a.absent{color:#c00}ol,ul{padding-left:15px;margin-left:5px}ol{list-style-type:lower-roman}table tr{border-top:1px solid #ccc;margin:0}table tr:nth-child(2n){background-color:#aaa}table tr td :first-child,table tr th :first-child{margin-top:0}table tr td:last-child,table tr th :last-child{margin-bottom:0}img{max-width:100%}blockquote{padding:0 15px;border-left:4px solid #ccc}code,tt{margin:0 2px;padding:0 5px;white-space:nowrap;border:1px solid #eaeaea;background-color:#f8f8f8;border-radius:3px}pre code{margin:0;white-space:pre;border:none}.highlight pre,pre{background-color:#f8f8f8;border:1px solid #ccc;font-size:13px;line-height:19px;overflow:auto;padding:6px 10px;border-radius:3px}
+  </style>
+ </head>
+ <body>
+  <h1>
+   IRShips
+  </h1>
+  <p>
+   IRShips is a dataset of synthetically generated IR imagery designed for the training and development of deep-learning based ATR algorithms.
+  </p>
+  <p>
+   Images were generated with CounterSim using a virtual camera in the 8-14 µm waveband.
+  </p>
+  <p>
+   <img alt="" src="thumbnail.png" width="1024" height="678"/>
+  </p>
+  <p>
+   The ships included in this dataset are:
+  </p>
+  <table>
+   <thead>
+    <tr>
+     <th>
+      Type
+     </th>
+     <th>
+      Class
+     </th>
+    </tr>
+   </thead>
+   <tbody>
+    <tr>
+     <td>
+      Corvette
+     </td>
+     <td>
+      Ada
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Corvette
+     </td>
+     <td>
+      Independence
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Corvette
+     </td>
+     <td>
+      Visby
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Frigate
+     </td>
+     <td>
+      Alvaro De Bazan
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Frigate
+     </td>
+     <td>
+      Jiangkai II
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Frigate
+     </td>
+     <td>
+      Oliver Hazard Perry
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Destroyer
+     </td>
+     <td>
+      Akizuki
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Destroyer
+     </td>
+     <td>
+      Sejong Daewang
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Destroyer
+     </td>
+     <td>
+      Zumwalt
+     </td>
+    </tr>
+    <tr>
+     <td>
+      Ferry
+     </td>
+     <td>
+      Armourique
+     </td>
+    </tr>
+   </tbody>
+  </table>
+  <p>
+   Ships are imaged at:
+  </p>
+  <ul>
+   <li>
+    ship-camera distances of 1000, 1111, 1250, 1333, 1429, 1667, 2000, 2500, 3333, 5000, 10000 metres
+   </li>
+   <li>
+    bearings from 0 - 359 degrees
+   </li>
+   <li>
+    camera pitch of 0, 5 and 10 degrees
+   </li>
+  </ul>
+  <h2>
+   Setup
+  </h2>
+  <p>
+   Run the
+   <code>
+    setup.py
+   </code>
+   script to unpack the dataset and to download and pre-process some images for use in online data augmentation.
+  </p>
+  <p>
+   Simply use the command:
+  </p>
+  <pre><code class="python">python3 setup.py
+</code></pre>
+  <p>
+   <strong>
+    NB
+   </strong>
+   this script will require:
+  </p>
+  <ul>
+   <li>
+    numpy
+   </li>
+   <li>
+    PIL
+   </li>
+   <li>
+    requests
+   </li>
+  </ul>
+  <p>
+   The third-party images downloaded in this process are itemised in
+   <code>
+    urls.yaml
+   </code>
+   .
+For each image, the following information is given:
+  </p>
+  <ul>
+   <li>
+    image_url: a direct web address to the image
+   </li>
+   <li>
+    reference: a reference for the image
+   </li>
+   <li>
+    licence: the terms under which the image is licensed
+   </li>
+   <li>
+    transforms: the image transforms applied during setup
+   </li>
+  </ul>
+  <h2>
+   Contents and Layout
+  </h2>
+  <p>
+   At its top level, the IRShips dataset contains three directories and two files:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     images
+    </strong>
+    contains the 972,000 synthetic IR images (1024 x 512).
+   </li>
+   <li>
+    <strong>
+     labels
+    </strong>
+    contains the 108,000 binary masks (each corresponds to 9 IR images).
+   </li>
+   <li>
+    <strong>
+     augment
+    </strong>
+    contains the real-world data used for image augmentation.
+   </li>
+   <li>
+    <strong>
+     key.yaml
+    </strong>
+    contains a key that indexes the possible ship type and class designations.
+   </li>
+   <li>
+    <strong>
+     metadata.csv
+    </strong>
+    contains metadata for each synthetic image.
+   </li>
+  </ul>
+  <p>
+   The
+   <strong>
+    augment
+   </strong>
+   directory contains the following three directories:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     clutter
+    </strong>
+    contains images relating to the augmentation of background clutter augmentation.
+   </li>
+   <li>
+    <strong>
+     sea
+    </strong>
+    contains contains images for sea-state augmentation from both an elevated and horizontal perspective.
+   </li>
+   <li>
+    <strong>
+     sky
+    </strong>
+    contains pre-processed images to be used for sky-state augmentation.
+   </li>
+  </ul>
+  <p>
+   The
+   <strong>
+    sea
+   </strong>
+   directory contains the following two directories:
+  </p>
+  <ul>
+   <li>
+    <strong>
+     elevated:
+    </strong>
+    images in here will be used for sea-state augmentation when the pitch of an image is greater than zero.
+   </li>
+   <li>
+    <strong>
+     horizontal:
+    </strong>
+    images in here be used for sea-state augmentation when the pitch of an image is zero.
+   </li>
+  </ul>
+  <p>
+   The
+   <strong>
+    clutter
+   </strong>
+   directory contains directories, each of which contains images for background clutter augmentation. 
+The name of these sub-directories denote the
+   <em>
+    type
+   </em>
+   of the clutter.
+The possible range of pixel intensities for each 'type' of clutter can be altered independently, using the
+   <code>
+    clutter_intensity_range
+   </code>
+   keyword argument of the
+   <code>
+    Dataloader
+   </code>
+   object.
+  </p>
+  <p>
+   The default clutter
+   <em>
+    types
+   </em>
+   are ice, landscape and structure, however it is possible to add any number of additional
+   <em>
+    types
+   </em>
+   .
+  </p>
+  <p>
+   Here is an overview of the structure described above:
+  </p>
+  <pre><code>irships
+    ├ augment                 
+    │    ├ clutter
+    │    │    ├ ice
+    │    │    │     ├ 0000.png
+    │    │    │     ├ 0001.png
+    │    │    │     └ ...
+    │    │    ├ landscape
+    │    │    │     ├ 0000.png
+    │    │    │     ├ 0001.png
+    │    │    │     └ ...
+    │    │    └ structure
+    │    │          ├ 0000.png
+    │    │          ├ 0001.png
+    │    │          └ ...
+    │    ├ sea
+    │    │    ├ elevated
+    │    │    │     ├ 0000.png
+    │    │    │     ├ 0001.png
+    │    │    │     └ ...
+    │    │    └ horizontal
+    │    │          ├ 0000.png
+    │    │          ├ 0001.png
+    │    │          └ ...
+    │    └ sky
+    │         ├ 0000.png
+    │         ├ 0001.png
+    │         └ ...
+    ├ images    
+    │     ├ 00000000.png
+    │     ├ 00000001.png
+    │     └ ...             
+    └ labels 
+    │     ├ 00000000.png
+    │     ├ 00000001.png
+    │     └ ... 
+    ├ key.yaml     
+    └ metadata.csv   
+</code></pre>
+  <h3>
+   Metadata
+  </h3>
+  <p>
+   The metadata file, contains the following column names:
+  </p>
+  <ul>
+   <li>
+    filename - the name of the image file
+   </li>
+   <li>
+    ship_type - the type of ship depicted in the image, such as Corvette, Frigate, etc.
+   </li>
+   <li>
+    ship_class - the class of ship depicted in the image, such as Ada, Independence, etc.
+   </li>
+   <li>
+    bearing - the bearing of the ship depicted in the image in degrees.
+   </li>
+   <li>
+    range - the distance between the camera and the depicted ship in metres.
+   </li>
+   <li>
+    pitch - the angle of pitch of the camera in degrees.
+   </li>
+   <li>
+    signature - the integer identifier number of the ship thermal appearance (0-9).
+   </li>
+   <li>
+    surface_temperature - the sea surface temperature in the image in degrees celsius.
+   </li>
+   <li>
+    ambient_temperature - ambient temperature degrees celsius.
+   </li>
+   <li>
+    x1
+   </li>
+   <li>
+    y1
+   </li>
+   <li>
+    x2
+   </li>
+   <li>
+    y2 - the extents of the ship depicted in the image (normalised by image height and width).
+   </li>
+   <li>
+    labelname - the name of the image's corresponding binary mask file.
+   </li>
+  </ul>
+  <h2>
+   Supporting code
+  </h2>
+  <h3>
+   Utils
+  </h3>
+  <p>
+   Supporting code for this dataset can be found in
+   <code>
+    utils.py
+   </code>
+   and includes dataloader.
+  </p>
+  <p>
+   If you would like:
+  </p>
+  <ul>
+   <li>
+    more information
+   </li>
+   <li>
+    to submit bug reports
+   </li>
+   <li>
+    to submit a feature request
+   </li>
+   <li>
+    the most up-to-date version
+   </li>
+  </ul>
+  <p>
+   please visit my
+   <a href="https://github.com/samuelwestlake/IRShips">
+    GitHub repository
+   </a>
+   .
+  </p>
+  <h3>
+   Example
+  </h3>
+  <p>
+   The
+   <code>
+    example.py
+   </code>
+   script demonstrates how the dataloader may be used to load IRShips images.
+  </p>
+  <p>
+   Simply use the command:
+  </p>
+  <pre><code class="python">python3 example.py
+</code></pre>
+  <p>
+   <strong>
+    NB
+   </strong>
+   this script will require:
+  </p>
+  <ul>
+   <li>
+    cv2 (OpenCV)
+   </li>
+  </ul>
+  <h2>
+   Licence
+  </h2>
+  <p>
+   Images included in this repository are licensed under CC BY-NC-SA 4.0, a full copy of this licence be found
+   <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode">
+    here
+   </a>
+   .
+  </p>
+  <h2>
+   Credit
+  </h2>
+  <p>
+   If this dataset helps your research, please give recognition by citing the accompanying paper. Example BibTeX entry below:
+  </p>
+  <pre><code>@inproceedings{westlake2020deep,
+  title={Deep learning for automatic target recognition with real and synthetic infrared maritime imagery},
+  author={Westlake, Samuel T and Volonakis, Timothy N and Jackman, James and James, David B and Sherriff, Andy},
+  booktitle={Artificial Intelligence and Machine Learning in Defense Applications II},
+  volume={11543},
+  pages={1154309},
+  year={2020},
+  organization={International Society for Optics and Photonics}
+}
+</code></pre>
+  <script src="/home/samuel/Remarkable/data/media/highlight.min.js">
+  </script>
+  <script>
+   hljs.initHighlightingOnLoad();
+  </script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS-MML_HTMLorMML" type="text/javascript">
+  </script>
+  <script type="text/javascript">
+   MathJax.Hub.Config({"showProcessingMessages" : false,"messageStyle" : "none","tex2jax": { inlineMath: [ [ "$", "$" ] ] }});
+  </script>
+ </body>
+</html>
