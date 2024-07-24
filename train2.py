@@ -17,8 +17,9 @@ num_epochs = 1                       # 训练轮数
 model_name = "resnet50"              # 使用的预训练模型名称
 model_save_path = 'best_model.pth'   # 之前保存的模型路径，用来继续训练
 continue_training = False            # 是否继续训练之前的模型
-best_accuracy = 0.0                  # 初始化最佳准确率
-use_data_count = 1000                # 训练时使用的数据数量，None 表示使用全部数据
+best_class_accuracy = 0.0            # 初始化最佳准确率
+best_type_accuracy = 0.0             # 初始化最佳准确率
+# use_data_count = 1000                # 训练时使用的数据数量，None 表示使用全部数据
 DATA_DIR = os.getcwd()               # 程序文件路径
 
 # 设置设备
@@ -73,20 +74,51 @@ for epoch in range(num_epochs):
             for index in range(len(batch)):
                 image = batch['image'][index]
                 label = batch['label'][index]
+                image_neme = batch['image_name'][index]
+
+                 # 将 PyTorch 张量转换为 NumPy 数组
+                if isinstance(image, torch.Tensor):
+                    image = image.numpy()
+
+                # 确保 image 是一个有效的 NumPy 数组
+                if not isinstance(image, np.ndarray):
+                    raise ValueError("image 不是一个有效的 NumPy 数组")
+
+                # 确保图像数据类型和范围正确
+                if image.max() <= 1.0:
+                    image = (image * 255).astype(np.uint8)
 
                 # 将单通道图像转换为三通道图像
                 if image.ndim == 2:
                     image = np.stack((image,) * 3, axis=-1)
-
+                # 保存图像
+                cv2.imwrite(f'processed-images/{image_neme}', image)
                 images.append(image)
 
-                x1, y1, x2, y2 = batch['shipBox'][index]
                 ship_class = batch['shipClass'][index]
                 ship_type = batch['shipType'][index]
-
-                bboxes.append([x1, y1, x2, y2])
                 ship_classes.append(ship_class)
                 ship_types.append(ship_type)
+
+                # 获取图像的尺寸
+                height, width = image.shape[:2]
+                # 获取边界框的相对比例坐标
+                x1, y1, x2, y2 = batch['shipBox'][index]
+                # 将相对比例坐标转换为绝对像素坐标
+                x1 = int(x1 * width)
+                y1 = int(y1 * height)
+                x2 = int(x2 * width)
+                y2 = int(y2 * height)
+                bboxes.append([x1, y1, x2, y2])
+                # 在图像中绘制边界框
+                cv2.rectangle(image, (x1, y1), (x2, y2), (0, 255, 0), 1)
+                # 保存图像
+                cv2.imwrite(f'processed2-images/{image_neme}', image)
+                # 裁剪图像
+                cropped_image = image[y1:y2, x1:x2]
+                # 保存裁剪后的图像
+                cv2.imwrite(f'processed3-images/{image_neme}', cropped_image)
+
 
             images = torch.stack([transforms.ToTensor()(img) for img in images]).to(device)
             bboxes = torch.tensor(bboxes, dtype=torch.float32).to(device)
@@ -123,10 +155,13 @@ for epoch in range(num_epochs):
     print(f"Epoch {epoch+1}/{num_epochs}, Loss: {running_loss:.4f}, Class Accuracy: {class_accuracy:.2f}%, Type Accuracy: {type_accuracy:.2f}%")
 
     # 如果当前准确率高于最佳准确率，则保存模型
-    if class_accuracy > best_accuracy:
-        best_accuracy = class_accuracy
-        torch.save(model.state_dict(), os.path.join(DATA_DIR, f"{class_accuracy:.4f}%.pth"))
-        print(f"Best model saved with class accuracy: {best_accuracy:.4f}%")
+    if class_accuracy > best_class_accuracy or type_accuracy > best_type_accuracy:
+        if class_accuracy > best_class_accuracy:
+            best_class_accuracy = class_accuracy
+        if type_accuracy > best_type_accuracy:
+            best_type_accuracy = type_accuracy
+        torch.save(model.state_dict(), os.path.join(DATA_DIR, f"type{type_accuracy:.4f}_class{class_accuracy:.4f}%.pth"))
+        print(f"Best model saved with class accuracy: {best_class_accuracy:.4f}%")
 
 # 强制保存最后一轮的模型
 torch.save(model.state_dict(), os.path.join(DATA_DIR, f"final_{class_accuracy:.4f}%.pth"))

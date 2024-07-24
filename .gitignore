@@ -1,6 +1,15 @@
 #忽略所有数据集
 irships/
 
+#忽略背景处理数据集
+processed-images/
+
+#忽略框选处理数据集
+processed2-images/
+
+#忽略裁剪处理数据集
+processed3-images/
+
 # # 忽略图像数据目录
 # irships/images/
 

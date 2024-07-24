@@ -275,6 +275,7 @@ class DataSet(object):
                 # "shipType": torch.tensor(ship_type, dtype=torch.long),
                 "shipClass": ship_class,
                 "shipType": ship_type,
+                "image_name": self.metadata.iloc[index].filename,
             }
         except ValueError as e:
             print(f"创建tensor时出错: {e}")
@@ -291,12 +292,12 @@ class DataSet(object):
         self.metadata = pd.read_csv("/".join((self.root, self._metadata_file)))
         # ----------------------------------------------
         # 测试，仅取部分数据
-        use_data_count = 1000  # 取数据的个数
-        if use_data_count is not None:
-            self.metadata = self.metadata.sample(frac=1).reset_index(
-                drop=True
-            )  # 打乱数据
-            self.metadata = self.metadata.head(use_data_count)  # 取参数个数据
+        # use_data_count = 1000  # 取数据的个数
+        # if use_data_count is not None:
+        #     # self.metadata = self.metadata.sample(frac=1).reset_index(
+        #     #     drop=True
+        #     # )  # 打乱数据
+        #     self.metadata = self.metadata.head(use_data_count)  # 取参数个数据
 
     # 打乱数据集索引
     def shuffle(self):
