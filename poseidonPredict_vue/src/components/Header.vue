@@ -6,7 +6,8 @@
       <i :class="icon" style="font-size: 20px;cursor: pointer;" @click="collapse"></i>
     </div>
     <div style="flex: 1;text-align: center;font-size: 34px;">
-      <span>poseidonPredict——船只识别系统</span>
+      <span>poseidonPredict —— 船只识别系统</span>
+      <!-- <span>基于知识图谱增强神经网络的图像识别系统</span> -->
     </div>
     <el-dropdown>
       <span>{{ user.name }}</span>

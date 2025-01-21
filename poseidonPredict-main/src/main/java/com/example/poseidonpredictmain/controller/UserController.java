@@ -44,6 +44,14 @@ public class UserController {
         return list.size() > 0 ? Result.suc(list) : Result.fail();
     }
 
+    // 查找是否存在此用户,存在返回true，不存在返回false
+    @GetMapping("/hasThisOne")
+    public Result hasThisOne(@RequestParam String number) {
+        List list = userService.lambdaQuery().eq(User::getNumber, number).list();
+        return list.size() > 0 ? Result.suc(true) : Result.suc(false);
+    }
+
+
     //新增
     @PostMapping("/save")
     public Result save(@RequestBody User user) {
