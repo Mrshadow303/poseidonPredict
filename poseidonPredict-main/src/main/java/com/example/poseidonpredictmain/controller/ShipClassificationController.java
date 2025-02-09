@@ -22,6 +22,7 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
 @CrossOrigin
@@ -40,6 +41,8 @@ public class ShipClassificationController {
             "Armourique"
     };
     private static final String FLASK_SERVER_URL = "http://localhost:5000/predict";  // Flask 服务的 URL
+
+    @Autowired
     private Neo4jShipClassService shipClassService;
 
     @PostMapping("/predict")
@@ -57,11 +60,14 @@ public class ShipClassificationController {
             JSONObject jsonResponse = new JSONObject(response);
             JSONArray predictions = jsonResponse.getJSONArray("predictions");
             List<String> classes = new ArrayList<>();
+            List<Double> confidences = new ArrayList<>();
             List<List<Integer>> bboxes = new ArrayList<>();
             for (int i = 0; i < predictions.length(); i++) {
                 JSONObject prediction = predictions.getJSONObject(i);
                 int classIndex = prediction.getInt("class");
                 classes.add(names[classIndex]);
+                double confidence = prediction.getDouble("confidence");
+                confidences.add(confidence);
                 JSONArray bbox = prediction.getJSONArray("box");
                 List<Integer> box = new ArrayList<>();
                 for (int j = 0; j < bbox.length(); j++) {
@@ -69,8 +75,9 @@ public class ShipClassificationController {
                 }
                 bboxes.add(box);
             }
-            System.out.println(classes);
-            System.out.println(bboxes);
+            System.out.println("classes: " + classes);
+            System.out.println("confidences: " + confidences);
+            System.out.println("bboxes: " + bboxes);
 
 
             // 在图片上绘制框并添加类别标签
@@ -96,16 +103,18 @@ public class ShipClassificationController {
             byte[] imageBytes = baos.toByteArray();
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
-            Optional<Neo4jShipClass> shipClass = null;
+            // 知识图谱增强，获取船舶详细信息
+            List<Optional<Neo4jShipClass>> shipDetails = new ArrayList<>(); // 初始化列表
             if(classes.size() > 0){
                 for (String className : classes) {
-                    shipClass = shipClassService.getShipClassDetails(className);
+                    shipDetails.add(shipClassService.getShipClassDetailsByName(className));
                 }
             }
 
             // 返回处理结果
-            System.out.println(ResponseEntity.ok().body("{\"classes\":" + classes.toString() + ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipClass\":" + shipClass.toString() + "}").toString());
-            return ResponseEntity.ok().body("{\"classes\":" + "\""+classes.toString() +"\""+ ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipClass\":" + shipClass.toString() + "}");
+            System.out.println(ResponseEntity.ok().body("{\"classes\":" + classes.toString() +"\", \"shipDetails\":" + shipDetails.toString() + "}").toString());
+            // System.out.println(ResponseEntity.ok().body("{\"classes\":" + classes.toString() + ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipDetails\":" + shipDetails.toString() + "}").toString());
+            return ResponseEntity.ok().body("{\"classes\":" + "\""+classes.toString() +"\"" + ", \"confidences\":" + "\""+confidences.toString() +"\"" + ", \"bboxes\":" + "\""+bboxes.toString() +"\"" + ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipDetails\":" + shipDetails.toString() + "}");
 
 
         } catch (IOException e) {

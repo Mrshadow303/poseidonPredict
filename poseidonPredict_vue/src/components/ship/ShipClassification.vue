@@ -43,11 +43,23 @@
     </div>
 
     <!-- 返回的识别结果 -->
-    <div class="result-section" v-if="shipClass">
-      <div class="result-block">
-        <p v-if="shipClass">
+    <div class="result-section" v-if="shipClass.length > 0">
+      <div class="result-block" v-for="(className, index) in shipClass" :key="index">
+        <p>
           <strong>船只分类:</strong>
-          {{ shipClass }}
+          {{ className }}
+        </p>
+        <p>
+          <strong>置信度:</strong>
+          {{ shipConfidence[index] }}
+        </p>
+        <p>
+          <strong>边界框:</strong>
+          {{ shipBbox[index] }}
+        </p>
+        <p v-if="shipDetails[index]">
+          <strong>船只详细信息:</strong>
+          {{ shipDetails[index] }}
         </p>
       </div>
     </div>
@@ -63,8 +75,11 @@ export default {
     return {
       selectedFile: null,
       uploadedImageUrl: null,
-      shipClass: "",
+      shipClass: [],
+      shipConfidence: [],
+      shipBbox: [],
       shipImage: "",
+      shipDetails: [],
       message: ""
     };
   },
@@ -83,8 +98,11 @@ export default {
         .post(requestUrl, formData)
         .then(response => {
           let data = response.data;
-          this.shipClass = data.classes[0];
+          this.shipClass = data.classes;
+          this.shipConfidence = data.confidences;
+          this.shipBbox = data.bboxes;
           this.shipImage = data.image;
+          this.shipDetails = data.shipDetails;
           this.message = "图片上传成功，识别完成！";
         })
         .catch(error => {

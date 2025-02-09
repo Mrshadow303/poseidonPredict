@@ -30,7 +30,7 @@ public class Neo4jControllerTest {
 
     @Test
     public void getShipClassTest() {
-        Optional<Neo4jShipClass> result = neo4jController.getShipClass("Ada");
+        Optional<Neo4jShipClass> result = neo4jController.getShipClassByName("Ada");
         System.out.println("result: " + result);
     }
 }

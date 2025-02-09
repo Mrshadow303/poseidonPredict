@@ -22,6 +22,8 @@ def predict():
 
     # 使用 YOLO 模型进行推理
     results = model(image)
+    print("results: ", results)
+    # print("result[0].boxes: ", results[0].boxes)
 
     # 处理结果，例如返回检测到的目标框和分类
     predictions = []

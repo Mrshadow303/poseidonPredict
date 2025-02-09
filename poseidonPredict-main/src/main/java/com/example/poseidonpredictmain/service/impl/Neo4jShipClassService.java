@@ -1,5 +1,6 @@
 package com.example.poseidonpredictmain.service.impl;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.example.poseidonpredictmain.entity.Neo4jShipClass;
@@ -9,13 +10,10 @@ import java.util.Optional;
 
 @Service
 public class Neo4jShipClassService {
-    private final Neo4jShipClassRepository shipClassRepository;
+    @Autowired
+    private Neo4jShipClassRepository shipClassRepository;
 
-    public Neo4jShipClassService(Neo4jShipClassRepository shipClassRepository) {
-        this.shipClassRepository = shipClassRepository;
-    }
-
-    public Optional<Neo4jShipClass> getShipClassDetails(String name) {
+    public Optional<Neo4jShipClass> getShipClassDetailsByName(String name) {
         return shipClassRepository.findShipClassWithRelationsByName(name);
     }
 }
