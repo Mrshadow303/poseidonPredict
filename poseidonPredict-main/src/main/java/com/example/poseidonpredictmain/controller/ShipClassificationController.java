@@ -9,6 +9,11 @@ import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.multipart.MultipartFile;
+
+import com.example.poseidonpredictmain.entity.Neo4jShipClass;
+import com.example.poseidonpredictmain.service.impl.Neo4jShipClassService;
+import java.util.Optional;
+
 import org.springframework.core.io.FileSystemResource;
 
 import java.awt.*;
@@ -35,6 +40,7 @@ public class ShipClassificationController {
             "Armourique"
     };
     private static final String FLASK_SERVER_URL = "http://localhost:5000/predict";  // Flask 服务的 URL
+    private Neo4jShipClassService shipClassService;
 
     @PostMapping("/predict")
     public ResponseEntity<?> predict(@RequestParam("image") MultipartFile imageFile) {
@@ -90,9 +96,16 @@ public class ShipClassificationController {
             byte[] imageBytes = baos.toByteArray();
             String base64Image = Base64.getEncoder().encodeToString(imageBytes);
 
+            Optional<Neo4jShipClass> shipClass = null;
+            if(classes.size() > 0){
+                for (String className : classes) {
+                    shipClass = shipClassService.getShipClassDetails(className);
+                }
+            }
+
             // 返回处理结果
-            //System.out.println(ResponseEntity.ok().body("{\"classes\":" + classes.toString() + ", \"image\":\"data:image/png;base64," + base64Image + "\"}").toString());
-            return ResponseEntity.ok().body("{\"classes\":" + "\""+classes.toString() +"\""+ ", \"image\":\"data:image/png;base64," + base64Image + "\"}");
+            System.out.println(ResponseEntity.ok().body("{\"classes\":" + classes.toString() + ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipClass\":" + shipClass.toString() + "}").toString());
+            return ResponseEntity.ok().body("{\"classes\":" + "\""+classes.toString() +"\""+ ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipClass\":" + shipClass.toString() + "}");
 
 
         } catch (IOException e) {
