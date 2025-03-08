@@ -44,7 +44,7 @@
 
     <!-- 返回的识别结果 -->
     <div class="result-section" v-if="shipClass.length > 0">
-      <div class="result-block" v-for="(className, index) in shipClass" :key="index">
+      <div class="result-block" v-for="(className, index) in shipClass" :key="index" style="text-align: left;">
         <p>
           <strong>船只分类:</strong>
           {{ className }}
@@ -58,8 +58,28 @@
           {{ shipBbox[index] }}
         </p>
         <p v-if="shipDetails[index]">
-          <strong>船只详细信息:</strong>
-          {{ shipDetails[index] }}
+          <strong>船只描述:</strong>
+          {{ shipDetails[index].description }}
+        </p>
+        <p v-if="shipDetails[index]">
+          <strong>船只类型:</strong>
+          {{ shipDetails[index].types.map(type => type.name).join(', ') }}
+        </p>
+        <p v-if="shipDetails[index]">
+          <strong>所属国家:</strong>
+          {{ shipDetails[index].countries.map(country => country.name).join(', ') }}
+        </p>
+        <p v-if="shipDetails[index]">
+          <strong>服役时间:</strong>
+          {{ shipDetails[index].serviceTimes.map(service => service.year).join(', ') }}
+        </p>
+        <p v-if="shipDetails[index]">
+          <strong>特点:</strong>
+          {{ shipDetails[index].features.map(feature => feature.name).join(', ') }}
+        </p>
+        <p v-if="shipDetails[index]">
+          <strong>用途:</strong>
+          {{ shipDetails[index].purposes.map(purpose => purpose.name).join(', ') }}
         </p>
       </div>
     </div>
@@ -98,15 +118,22 @@ export default {
         .post(requestUrl, formData)
         .then(response => {
           let data = response.data;
+          console.log("data: ", data);
+          console.log("data type: ", typeof data);
+          console.log("data.classes: ", data.classes);
+          console.log("data.confidences: ", data.confidences);
+          console.log("data.bboxes: ", data.bboxes);
           this.shipClass = data.classes;
           this.shipConfidence = data.confidences;
           this.shipBbox = data.bboxes;
           this.shipImage = data.image;
           this.shipDetails = data.shipDetails;
           this.message = "图片上传成功，识别完成！";
+
         })
         .catch(error => {
           this.message = "图片上传失败: " + error.message;
+          console.log("error: ", error);
         });
     },
     cancelSelection() {

@@ -21,7 +21,10 @@ import java.awt.image.BufferedImage;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.Base64;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 @RestController
@@ -53,15 +56,17 @@ public class ShipClassificationController {
             String filePath = saveFile(imageFile);
 
             // 通过HTTP请求将图像文件发送到Flask服务器
-            String response = sendImageToFlask(filePath);
-            System.out.println("flask返回值为"+response);
+            String yoloResponse = sendImageToFlask(filePath);
+            System.out.println("flask返回值为"+yoloResponse);
+
 
             // 解析Flask返回的JSON响应
-            JSONObject jsonResponse = new JSONObject(response);
+            JSONObject jsonResponse = new JSONObject(yoloResponse);
             JSONArray predictions = jsonResponse.getJSONArray("predictions");
             List<String> classes = new ArrayList<>();
             List<Double> confidences = new ArrayList<>();
             List<List<Integer>> bboxes = new ArrayList<>();
+
             for (int i = 0; i < predictions.length(); i++) {
                 JSONObject prediction = predictions.getJSONObject(i);
                 int classIndex = prediction.getInt("class");
@@ -111,12 +116,15 @@ public class ShipClassificationController {
                 }
             }
 
-            // 返回处理结果
-            System.out.println(ResponseEntity.ok().body("{\"classes\":" + classes.toString() +"\", \"shipDetails\":" + shipDetails.toString() + "}").toString());
-            // System.out.println(ResponseEntity.ok().body("{\"classes\":" + classes.toString() + ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipDetails\":" + shipDetails.toString() + "}").toString());
-            return ResponseEntity.ok().body("{\"classes\":" + "\""+classes.toString() +"\"" + ", \"confidences\":" + "\""+confidences.toString() +"\"" + ", \"bboxes\":" + "\""+bboxes.toString() +"\"" + ", \"image\":\"data:image/png;base64," + base64Image + "\", \"shipDetails\":" + shipDetails.toString() + "}");
+            // 组装 JSON 响应
+            Map<String, Object> response = new HashMap<>();
+            response.put("classes", classes);
+            response.put("confidences", confidences);
+            response.put("bboxes", bboxes);
+            response.put("image", "data:image/png;base64," + base64Image);
+            response.put("shipDetails", shipDetails); // shipDetails 现在是 List<Neo4jShipClass>
 
-
+            return ResponseEntity.ok(response);
         } catch (IOException e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("文件处理时发生错误: " + e.getMessage());
