@@ -1,9 +1,9 @@
 // 个人主页
 <template>
   <div style="text-align: center;background-color: #f1f1f3;height: 100%;padding: 0px;margin: 0px;">
-    <el-row :gutter="20">
-      <el-col :span="12">
-        <el-card class="box-card">
+    <el-row :gutter="20" align="top">
+      <el-col :style="{ width: '50%' }">
+        <el-card class="box-card" style="height: 40vh;">
           <!-- 左上个人信息 -->
           <div class="user" style="height: 290px">
             <img :src="getRoleImage(user.roleId)" alt />
@@ -20,9 +20,49 @@
               >{{ user.roleId == 0 ? "超级管理员" : (user.roleId == 1 ? "管理员" : "用户") }}</el-tag>
             </div>
           </div>
-          <!-- 不知道放什么，先余着 -->
-          <div>
-            <h1>不知道放什么，先余着</h1>
+        </el-card>
+      </el-col>
+      <el-col :style="{ width: '50%' }">
+        <el-card class="box-card" style="height: 40vh;">
+          <!-- 右上角折线图 -->
+          <div class="line-chart">
+            <h2>过去七天访问数</h2>
+            <div ref="lineChart" style="width: 100%; height: 300px;"></div>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :style="{ width: '50%' }">
+        <el-card class="box-card" style="height: 40vh; overflow-y: auto;">
+          <!-- 左下角大屏 -->
+          <div class="info-screen">
+            <h2>船只状态信息</h2>
+            <table style="width: 100%; border-collapse: collapse;">
+              <thead>
+                <tr>
+                  <th style="text-align: left;">船名</th>
+                  <th style="text-align: left;">船编号</th>
+                  <th style="text-align: left;">状态</th>
+                  <th style="text-align: left;">预计时间</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr v-for="(info, index) in boardingInfo" :key="index" :style="{ backgroundColor: info.color }">
+                  <td>{{ info.shipName }}</td>
+                  <td>{{ info.shipId }}</td>
+                  <td><strong>{{ info.status }}</strong></td>
+                  <td>{{ info.estimatedTime }}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </el-card>
+      </el-col>
+      <el-col :style="{ width: '50%' }">
+        <el-card class="box-card" style="height: 40vh;">
+          <!-- 右下角柱状图 -->
+          <div class="bar-chart">
+            <h2>过去七日船类识别接口调用次数</h2>
+            <div ref="barChart" style="width: 100%; height: 300px;"></div>
           </div>
         </el-card>
       </el-col>
@@ -70,19 +110,27 @@ export default {
       optionZhu: {
         legend: {},
         tooltip: {},
-        dataset: {
-        },
+        dataset: {},
         xAxis: { type: "category" },
         yAxis: {},
-        // Declare several bar series, each will be mapped
-        // to a column of dataset.source by default.
         series: [
           { type: "bar" },
           { type: "bar" },
           { type: "bar" },
           { type: "bar" }
         ]
-      }
+      },
+      boardingInfo: [
+        { shipName: "船只A", shipId: "001", status: "正在离港", estimatedTime: "预计离港时间: 14:30", color: "#d1e7dd" },
+        { shipName: "船只B", shipId: "002", status: "等待离港", estimatedTime: "预计离港时间: 15:00", color: "#fff3cd" },
+        { shipName: "船只C", shipId: "003", status: "正在入港", estimatedTime: "预计入港时间: 16:00", color: "#d1e7cd" },
+        { shipName: "船只D", shipId: "004", status: "即将入港", estimatedTime: "预计入港时间: 16:30", color: "#fff3cd" },
+        { shipName: "船只E", shipId: "005", status: "正在装载", estimatedTime: "预计装载完毕时间: 17:00", color: "#cfe2f3" },
+        { shipName: "船只F", shipId: "006", status: "装载完毕", estimatedTime: "预计完工时间: 18:00", color: "#d1a8dd" },
+        { shipName: "船只G", shipId: "007", status: "已离港", estimatedTime: "预计到达时间: 19:00", color: "#a1ddff" }
+      ],
+      visitData: this.generateVisitData(), // 生成过去七天的访问数据
+      recognitionData: this.generateRecognitionData() // 生成过去七天的识别数据
     };
   },
   computed: {},
@@ -98,13 +146,76 @@ export default {
       } else {
         return this.url3;
       }
+    },
+    generateVisitData() {
+      return Array.from({ length: 7 }, () => Math.floor(Math.random() * 200));
+    },
+    generateRecognitionData() {
+      return Array.from({ length: 7 }, () => Math.floor(Math.random() * 100));
+    },
+    renderLineChart() {
+      const chartDom = this.$refs.lineChart;
+      const myChart = echarts.init(chartDom);
+      const option = {
+        title: {
+          text: '过去七天访问数'
+        },
+        tooltip: {},
+        xAxis: {
+          type: 'category',
+          data: this.getLastSevenDays()
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          name: '访问数',
+          type: 'line',
+          data: this.visitData
+        }]
+      };
+      myChart.setOption(option);
+    },
+    renderBarChart() {
+      const chartDom = this.$refs.barChart;
+      const myChart = echarts.init(chartDom);
+      const option = {
+        title: {
+          text: '过去七日船类识别接口调用次数'
+        },
+        tooltip: {},
+        xAxis: {
+          type: 'category',
+          data: this.getLastSevenDays()
+        },
+        yAxis: {
+          type: 'value'
+        },
+        series: [{
+          name: '调用次数',
+          type: 'bar',
+          data: this.recognitionData
+        }]
+      };
+      myChart.setOption(option);
+    },
+    getLastSevenDays() {
+      const days = [];
+      const today = new Date();
+      for (let i = 0; i < 7; i++) {
+        const date = new Date(today);
+        date.setDate(today.getDate() - (6 - i));
+        days.push(date.toLocaleDateString());
+      }
+      return days;
     }
   },
   created() {
     this.init();
   },
   mounted() {
-
+    this.renderLineChart();
+    this.renderBarChart();
   }
 };
 </script>
@@ -145,5 +256,30 @@ export default {
       }
     }
   }
+}
+
+.line-chart, .bar-chart, .info-screen {
+  margin: 20px 0;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #fff;
+}
+.info-screen {
+  max-height: 300px;
+  overflow-y: auto;
+}
+.info-screen ul {
+  list-style-type: none;
+  padding: 0;
+}
+.info-screen li {
+  margin: 5px 0;
+  padding: 10px;
+  border-radius: 5px;
+}
+.info-screen .divider {
+  border-top: 1px solid #ccc;
+  margin: 5px 0;
 }
 </style>

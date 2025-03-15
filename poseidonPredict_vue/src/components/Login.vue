@@ -250,7 +250,6 @@ export default {
   },
   methods: {
     // 注册
-    // 未实现
     async register() {
       this.$refs.registerForm.validate(async valid => {
         if (valid) {

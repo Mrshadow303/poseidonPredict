@@ -16,7 +16,11 @@
       <el-table-column label="操作">
         <template slot-scope="scope">
           <el-button size="small" type="success" @click="editMenu(scope.row)">编辑</el-button>
-          <el-popconfirm title="确定删除吗？" @confirm="deleteMenu(scope.row.id)" style="margin-left: 5px;">
+          <el-popconfirm
+            title="确定删除吗？"
+            @confirm="deleteMenu(scope.row.id)"
+            style="margin-left: 5px;"
+          >
             <el-button slot="reference" size="small" type="danger">删除</el-button>
           </el-popconfirm>
         </template>
@@ -59,10 +63,14 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "MenuManage",
   data() {
     return {
+      user: {},
+      roleId: "",
       menuList: [],
       pageSize: 5,
       pageNum: 1,
@@ -93,18 +101,22 @@ export default {
     };
   },
   methods: {
+    init() {
+      this.user = JSON.parse(sessionStorage.getItem("CurUser"));
+    },
     resetParams() {
       this.menuName = "";
     },
     loadMenus() {
-      // 模拟从后端获取菜单列表数据，实际应用需要调用 API
-      // 示例数据，实际需根据后端返回的数据结构进行调整
-      this.menuList = [
-        { id: 1, menuName: "菜单1", menuLevel: 1, menuClick: "click1", menuComponent: "Component1.vue" },
-        { id: 2, menuName: "菜单2", menuLevel: 2, menuClick: "click2", menuComponent: "Component2.vue" },
-        { id: 3, menuName: "菜单3", menuLevel: 1, menuClick: "click3", menuComponent: "Component3.vue" }
-      ];
-      this.total = this.menuList.length;
+      axios
+        .get(this.$httpUrl + "/poseidonPredict/menu/list?roleId=" + this.user.roleId)
+        .then(response => {
+          this.menuList = response.data.data; // 假设返回的数据结构为 { data: [...] }
+          this.total = this.menuList.length;
+        })
+        .catch(error => {
+          console.error("获取菜单列表失败:", error);
+        });
     },
     handleSizeChange(val) {
       console.log(`每页 ${val} 条`);
@@ -152,6 +164,7 @@ export default {
     }
   },
   created() {
+    this.init();
     this.loadMenus(); // 组件创建时加载菜单列表
   }
 };
